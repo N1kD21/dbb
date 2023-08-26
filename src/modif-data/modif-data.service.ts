@@ -12,4 +12,8 @@ export class ModifDataService {
   getBasicCoef() {
     return basicCoef;
   }
+
+  putModifyCoef(nameCoef: string, id: string) {
+    basicCoef[nameCoef] = parseInt(id);
+  }
 }

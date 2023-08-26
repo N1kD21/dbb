@@ -1,17 +1,22 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { ModifDataService } from './modif-data.service';
 
 @Controller('modif-data')
 export class ModifDataController {
-  constructor(private readonly modifdataService: ModifDataService) {}
+  constructor(private readonly modifydataService: ModifDataService) {}
 
   @Get('/get/data')
   getData() {
-    return this.modifdataService.getData();
+    return this.modifydataService.getData();
   }
 
   @Get('/get/basicCoef')
   getBasicCoef() {
-    return this.modifdataService.getBasicCoef();
+    return this.modifydataService.getBasicCoef();
+  }
+
+  @Post('basicCoefPut/:nameCoef/:id')
+  update(@Param('nameCoef') nameCoef: string, @Param('id') id: string) {
+    return this.modifydataService.putModifyCoef(nameCoef, id);
   }
 }
