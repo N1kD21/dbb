@@ -1,7 +1,17 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Param,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import { basicCoef, data } from './data/data';
 import { SaleryService } from './salery/salery.service';
+import { CreateDto } from './dto/create.dto';
 
 @Controller('salery')
 export class AppController {
@@ -21,5 +31,13 @@ export class AppController {
       accum += salery.salaryCalculation(el.name);
     });
     return accum;
+  }
+
+  @UsePipes(new ValidationPipe())
+  @Post('test')
+  @HttpCode(200)
+  create(@Body() body: CreateDto) {
+    console.log(body);
+    return '=++++';
   }
 }

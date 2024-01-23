@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 import { ModifDataService } from './modif-data.service';
 
 @Controller('modif-data')
